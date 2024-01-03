@@ -1,6 +1,6 @@
 "use client"
 import { database } from '../../../services/firebase';
-import {  useState } from 'react';
+import React, {  useState } from 'react';
 import style from '../cadastro/cadastro.css';
 import Button from '../components/button/button';
 import Input from '../components/input/input';
@@ -25,6 +25,12 @@ export default function Cadastro() {
     confirmaSenha: '',
   });
   const [sucesso, setSucesso] = useState(false);
+  const [image, setImage] = useState('');
+
+  const uploadImage = async (e) => {
+    e.preventDefault();
+    //console.log("Upload Imagem");//
+  };
 
   const gravar = (e) => {
     e.preventDefault();
@@ -102,7 +108,8 @@ export default function Cadastro() {
       return;
     }
 
-    // chamando a const gravar com o evento
+    // chamando a const gravar com o evento e upload imagem
+    uploadImage(e);
     gravar(e);
     
   };
@@ -133,6 +140,9 @@ export default function Cadastro() {
             {mensagens.confirmaSenha && <p className="erro">{mensagens.confirmaSenha}</p>}
 
             {sucesso && Object.values(mensagens).every((mensagem) => mensagem === '') && <p className="sucesso">Cadastro realizado com sucesso! ✔️</p>}
+
+            <label>Carregue uma imagem</label>
+            <input className='input-image' type="file" name="Image" onChange={(e) => setImage(e.target.files[0])}/>
 
             <Button type="submit">Cadastrar</Button>
             <Link href="/login">Já possui uma conta? Faça login! </Link>
