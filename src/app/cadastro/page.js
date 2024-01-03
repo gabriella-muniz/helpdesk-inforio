@@ -6,6 +6,8 @@ import Button from '../components/button/button';
 import Input from '../components/input/input';
 import LoginCard from "../login-card/page";
 import Link from 'next/link';
+import { getDatabase, ref, push, set } from 'firebase/database';
+
 
 export default function Cadastro() {
   const [nome, setNome] = useState('');
@@ -37,19 +39,20 @@ export default function Cadastro() {
     // Aqui estou usando push() como exemplo
 
     // Crie uma referência para o nó "contatos" no seu banco de dados
-    const contatosRef = database.ref('contatos');
+    const db = getDatabase();
+    const contatosRef = ref(db, 'contatos');
 
     // Gere uma nova chave única para cada registro
-    const novoContatoRef = contatosRef.push();
+    const novoContatoRef =  push(contatosRef);
 
     // Salve os dados no nó "contatos" usando a chave gerada
-    novoContatoRef.set({
+    set(novoContatoRef, {
       nome,
       email,
       telefone,
       cpf,
       senha,
-      confirmaSenha
+      confirmaSenha,
     });
 
     // Configura o estado de sucesso para exibir a mensagem adequada
@@ -101,9 +104,11 @@ export default function Cadastro() {
     }
 
     // Simulando a lógica de salvar dados no Firebase
-    gravar();
+    gravar(e);
     // Lógica para salvar dados...
   };
+
+  
 
   return (
     <>
