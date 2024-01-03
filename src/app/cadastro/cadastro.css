@@ -25,3 +25,16 @@ a{
         text-decoration: none;
     
 }
+
+
+.erro {
+    color: red;
+    font-size: 15px;
+  }
+  
+  
+  .sucesso {
+    color: green;
+    text-align: center;
+  }
+  
