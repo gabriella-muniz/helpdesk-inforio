@@ -29,23 +29,22 @@ export default function Cadastro() {
   const gravar = (e) => {
     e.preventDefault();
 
-    // Verifique se todos os campos necessários estão preenchidos antes de gravar no banco de dados
+    // Verificação de campos necessários 
     if (!nome || !email || !cpf || !telefone || !senha || senha !== confirmaSenha) {
       console.error('Formulário inválido');
       return;
     }
 
-    // Use o método push() ou set() conforme necessário para salvar os dados
-    // Aqui estou usando push() como exemplo
+    
 
-    // Crie uma referência para o nó "contatos" no seu banco de dados
+    // referência "contatos" 
     const db = getDatabase();
     const contatosRef = ref(db, 'contatos');
 
-    // Gere uma nova chave única para cada registro
+    // chave única para cada registro
     const novoContatoRef =  push(contatosRef);
 
-    // Salve os dados no nó "contatos" usando a chave gerada
+    // Salvar os dados dos "contatos" usando a chave gerada
     set(novoContatoRef, {
       nome,
       email,
@@ -55,7 +54,7 @@ export default function Cadastro() {
       confirmaSenha,
     });
 
-    // Configura o estado de sucesso para exibir a mensagem adequada
+    // mensagem adequada
     setSucesso(true);
   };
 
@@ -103,9 +102,9 @@ export default function Cadastro() {
       return;
     }
 
-    // Simulando a lógica de salvar dados no Firebase
+    // chamando a const gravar com o evento
     gravar(e);
-    // Lógica para salvar dados...
+    
   };
 
   
