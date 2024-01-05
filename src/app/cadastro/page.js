@@ -16,6 +16,7 @@ export default function Cadastro() {
   const [telefone, setTelefone] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmaSenha, setConfirmaSenha] = useState('');
+  const [image, setImage] = useState('');
   const [mensagens, setMensagens] = useState({
     nome: '',
     email: '',
@@ -25,7 +26,7 @@ export default function Cadastro() {
     confirmaSenha: '',
   });
   const [sucesso, setSucesso] = useState(false);
-  const [image, setImage] = useState('');
+  
 
   const uploadImage = async (e) => {
     e.preventDefault();
@@ -58,6 +59,7 @@ export default function Cadastro() {
       cpf,
       senha,
       confirmaSenha,
+      image,
     });
 
     // mensagem adequada
@@ -75,6 +77,7 @@ export default function Cadastro() {
       telefone: '',
       senha: '',
       confirmaSenha: '',
+      image:'',
     });
     setSucesso(false);
 
@@ -127,7 +130,7 @@ export default function Cadastro() {
             <Input type="email" placeholder="Digite seu email" value={email} onChange={(e) => setEmail(e.target.value)} />
             {mensagens.email && <p className="erro">{mensagens.email}</p>}
 
-            <Input type="number" placeholder="CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
+            <Input type="text" placeholder="CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
             {mensagens.cpf && <p className="erro">{mensagens.cpf}</p>}
 
             <Input type="tel" id="telefone"   placeholder="Telefone: (xx) xxxxx-xxxx" value={telefone} onChange={(e) => setTelefone(e.target.value)} />

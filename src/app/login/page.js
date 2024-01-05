@@ -15,10 +15,11 @@ export default function Login(){
         
         <form className='form'> 
             <Input type= "email" placeholder="Digite seu email" />
-            <Input type= "password" placeholder="Digite sua senha" />
+            <Input type= "password" placeholder="Digite sua senha"/>
     
            <Button>Entrar</Button>
            <Link href="/cadastro">Ainda não possui conta? Crie uma! </Link>
+           <Link href="/lembrar">Esqueceu a senha? Clique aqui</Link>
         </form>
            
            </LoginCard>
