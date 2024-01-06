@@ -39,3 +39,17 @@ a {
 .input {
   background-color: rgba(233, 228, 228, 0.908);
 }
+
+.buttons-lembrar {
+  align-items: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 5px;
+}
+
+.input-email{
+  padding: 20px;
+}
+

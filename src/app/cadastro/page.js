@@ -1,6 +1,6 @@
 "use client"
 import { database } from '../../../services/firebase';
-import {  useState } from 'react';
+import React, {  useState } from 'react';
 import style from '../cadastro/cadastro.css';
 import Button from '../components/button/button';
 import Input from '../components/input/input';
@@ -16,6 +16,7 @@ export default function Cadastro() {
   const [telefone, setTelefone] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmaSenha, setConfirmaSenha] = useState('');
+  const [image, setImage] = useState('');
   const [mensagens, setMensagens] = useState({
     nome: '',
     email: '',
@@ -25,6 +26,12 @@ export default function Cadastro() {
     confirmaSenha: '',
   });
   const [sucesso, setSucesso] = useState(false);
+  
+
+  const uploadImage = async (e) => {
+    e.preventDefault();
+    //console.log("Upload Imagem");//
+  };
 
   const gravar = (e) => {
     e.preventDefault();
@@ -52,6 +59,7 @@ export default function Cadastro() {
       cpf,
       senha,
       confirmaSenha,
+      image,
     });
 
     // mensagem adequada
@@ -69,6 +77,7 @@ export default function Cadastro() {
       telefone: '',
       senha: '',
       confirmaSenha: '',
+      image:'',
     });
     setSucesso(false);
 
@@ -102,7 +111,8 @@ export default function Cadastro() {
       return;
     }
 
-    // chamando a const gravar com o evento
+    // chamando a const gravar com o evento e upload imagem
+    uploadImage(e);
     gravar(e);
     
   };
@@ -120,7 +130,7 @@ export default function Cadastro() {
             <Input type="email" placeholder="Digite seu email" value={email} onChange={(e) => setEmail(e.target.value)} />
             {mensagens.email && <p className="erro">{mensagens.email}</p>}
 
-            <Input type="number" placeholder="CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
+            <Input type="text" placeholder="CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
             {mensagens.cpf && <p className="erro">{mensagens.cpf}</p>}
 
             <Input type="tel" id="telefone"   placeholder="Telefone: (xx) xxxxx-xxxx" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
@@ -134,6 +144,9 @@ export default function Cadastro() {
 
             {sucesso && Object.values(mensagens).every((mensagem) => mensagem === '') && <p className="sucesso">Cadastro realizado com sucesso! ✔️</p>}
 
+            <label>Carregue uma imagem</label>
+            <input className='input-image' type="file" name="Image" onChange={(e) => setImage(e.target.files[0])}/>
+
             <Button type="submit">Cadastrar</Button>
             <Link href="/login">Já possui uma conta? Faça login! </Link>
           </form>
@@ -142,6 +155,3 @@ export default function Cadastro() {
     </>
   );
 }
-
-
-
