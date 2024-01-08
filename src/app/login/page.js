@@ -1,3 +1,5 @@
+"use client"
+
 import style from '../login/style-login.css'
 import Link from 'next/link'
 import Button from '../components/button/button';
@@ -25,6 +27,7 @@ export default function Login() {
   
          <Button>Entrar</Button>
          <Link href="/cadastro">Ainda não possui conta? Crie uma! </Link>
+         <Link href="/lembrar">Esqueceu a senha? Clique aqui!</Link>
       </form>
          
          </LoginCard>

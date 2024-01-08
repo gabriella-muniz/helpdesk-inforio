@@ -1,4 +1,5 @@
 "use client"
+
 import { database } from '../../../services/firebase';
 import React, {  useState } from 'react';
 import style from '../cadastro/cadastro.css';
