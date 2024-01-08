@@ -38,4 +38,23 @@ a {
 
 .input {
   background-color: rgba(233, 228, 228, 0.908);
+  width: 88%;
+}
+
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
+.input-container input {
+  padding-left: 30px; /* Ajuste conforme o tamanho do ícone */
+}
+
+.icon {
+  padding: 8px;
+  font-size: 20px ;
+  position: absolute;
+  right: 5%; /* Ajuste conforme desejado */
+  top: 50%;
+  transform: translateY(-50%);
 }
