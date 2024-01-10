@@ -8,13 +8,19 @@ import Input from '../input/input'
 import LoginCard from '@/app/login-card/page';
 import { BiMailSend } from "react-icons/bi";
 
-const TrocarSenhaModal = ({ onClose }) => {
+export default function TrocarSenhaModal ({ id='modal', onClose =() => {}}){
     const handleLoginLinkClick = () => {
-        onClose(); // Adiciona o fechamento do modal quando o link é clicado
+        onClose(); 
       };
+
+      const handleOutsideClick = (e) => {
+        if(e.target.id == id) onClose();
+    }
+
+
   return(
     <>
-<div onClose={onClose}className='background-lembrar'>
+<div id={id} onClick={handleOutsideClick}className='background-lembrar'>
     <LoginCard title="Recuperar a senha">
      <form className='form'>
         <label>Insira o seu e-mail</label>
@@ -37,4 +43,4 @@ const TrocarSenhaModal = ({ onClose }) => {
   );
 };
 
-export default TrocarSenhaModal;
+
