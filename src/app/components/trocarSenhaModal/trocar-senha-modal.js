@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Button from '../button/button';
 import Input from '../input/input'
 import LoginCard from '@/app/login-card/page';
+import { BiMailSend } from "react-icons/bi";
 
 const TrocarSenhaModal = ({ onClose }) => {
     const handleLoginLinkClick = () => {
@@ -17,7 +18,12 @@ const TrocarSenhaModal = ({ onClose }) => {
     <LoginCard title="Recuperar a senha">
      <form className='form'>
         <label>Insira o seu e-mail</label>
-          <Input type="email" placeholder="Digite o email"/>
+        <div className="input-container"> <Input
+        
+         type="email" 
+         placeholder="Digite o email"/>
+         <BiMailSend  className="icon" />
+            </div>
 
           <div className='buttons-lembrar'>
           <Button type="submit">Enviar</Button>

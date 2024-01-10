@@ -5,7 +5,7 @@ import Button from '../components/button/button';
 import Input from '../components/input/input';
 import LoginCard from "../login-card/page";
 import Link from "next/link";
-import { BiMailSend } from "react-icons/bi";
+
 
 
 export default function Lembrar(){
