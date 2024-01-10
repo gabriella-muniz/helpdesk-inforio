@@ -6,6 +6,15 @@ import Button from '../components/button/button';
 import Input from '../components/input/input';
 import LoginCard from '../login-card/page';
 import TrocarSenhaModal from '../components/trocarSenhaModal/trocar-senha-modal';
+import LoginCard from "../login-card/page";
+import { useState } from 'react';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../../../services/firebase'; 
+import { useRouter } from 'next/router';
+import { BiUser  } from "react-icons/bi";
+import { BiLockAlt } from "react-icons/bi";
+
+
 
 export default function Login() {
   const [isTrocarSenhaModalOpen, setTrocarSenhaModalOpen] = useState(false);
