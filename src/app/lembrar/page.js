@@ -22,7 +22,7 @@ export default function Lembrar(){
                 type="email"
                 placeholder="Digite o email"
               />
-              <BiMailSend  className="icon" />
+              
             </div>
 
             <div className="buttons-lembrar">

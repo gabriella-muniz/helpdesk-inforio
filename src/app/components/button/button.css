@@ -20,3 +20,17 @@ button:hover {
   color: rgb(66, 139, 202);
   box-shadow: 2px 2px 2px 2px rgba(172, 172, 172, 0.918);
 }
+
+.button2{
+  background-color: rgb(208, 206, 206);
+  padding: 15px 25px;
+  border: 0;
+  color: rgb(66, 139, 202) ;
+  font-size: 18px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 2px 2px rgba(209, 209, 209, 0.918);
+  margin-top: -25px;
+}

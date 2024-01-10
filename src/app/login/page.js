@@ -6,8 +6,6 @@ import Button from '../components/button/button';
 import Input from '../components/input/input';
 import LoginCard from '../login-card/page';
 import TrocarSenhaModal from '../components/trocarSenhaModal/trocar-senha-modal';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../../services/firebase'; 
 import { useRouter } from 'next/router';
 import { BiUser  } from "react-icons/bi";
 import { BiLockAlt } from "react-icons/bi";
@@ -32,8 +30,7 @@ export default function Login() {
            </div>
            
             <Button type="submit">Entrar</Button>
-            <Link href="/cadastro">Ainda não possui conta? Crie uma!</Link>
-            <Button type="button" onClick={() => setTrocarSenhaModalOpen(true)}>Esqueceu a senha? Clique aqui!</Button>
+            <Button className='button2' type="button" onClick={() => setTrocarSenhaModalOpen(true)}>Esqueceu a senha? Clique aqui!</Button>
           </form>
         </LoginCard>
       </div>
