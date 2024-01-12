@@ -7,6 +7,7 @@ import {
   SlEarphonesAlt,
   SlLogout,
 } from "react-icons/sl";
+import ResumoTicket from "../tela-funcionario/resumo-ticket/resumo";
 
 function Navbar({ openModal }) {
   const [active, setActive] = useState("nav-menu");
@@ -24,7 +25,7 @@ function Navbar({ openModal }) {
   };
 
   return (
-    <>
+    <><>
       <nav className="nav">
         <div className="logo-img">
           <img src="http://www.inforio.com.br/images/logo.png" alt="logo"></img>
@@ -63,8 +64,7 @@ function Navbar({ openModal }) {
             width="100%"
             src="https://img.freepik.com/vetores-premium/perfil-de-avatar-ilustracoes-vetoriais-para-site-redes-sociais-icone-de-perfil-de-usuario_495897-226.jpg"
             className="avatar-img"
-            alt="logo"
-          />
+            alt="logo" />
           <span>Fulano</span>
         </div>
 
@@ -74,6 +74,10 @@ function Navbar({ openModal }) {
           <div className="line3"></div>
         </div>
       </nav>
+    </>
+      <div className="resumoTicket">
+        <ResumoTicket />
+      </div>
     </>
   );
 }
