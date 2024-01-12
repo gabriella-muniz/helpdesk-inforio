@@ -1,0 +1,137 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+.nav-item a {
+  text-decoration: none;
+  font-weight: 600;
+  color: azure;
+}
+
+.logo-img img {
+  width: 160px;
+  height: 45px;
+  padding-left: 7px;
+}
+
+.avatar-img {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 10%;
+  overflow: hidden;
+}
+
+.avatar-container {
+  display: flex;
+  gap: 4px;
+  margin: 5px;
+  padding: 8px;
+  margin-right: 2px;
+  height: 3rem;
+  border-radius: 10px;
+  background-color: #b2c7d8;
+  align-items: center;
+}
+
+.avatar-container span {
+  padding-right: 10px;
+  font-weight: 600;
+  color: whitesmoke;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8vh;
+  background-color: #6ca3d0;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  color: azure;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.nav-link:hover {
+  color: white;
+  transition: 2s;
+}
+
+.nav-brand {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+/* FEITO */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+  gap: 3.9rem;
+}
+
+.nav-toggle div {
+  width: 2.5rem;
+  height: 0.2rem;
+  margin: 0.4rem;
+  background-color: darkgray;
+  transition: 0.4s ease-in;
+}
+
+.nav-toggle {
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width: 896px) {
+  .nav-toggle {
+    display: block;
+  }
+  .nav-menu {
+    position: fixed;
+    top: 8vh;
+    right: 0;
+    width: 50%;
+    height: 93vh;
+    background-color: #6ca3d0;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: 0.5s ease-in;
+  }
+
+  .nav-link:hover {
+    color: thistle;
+    transition: 2s;
+  }
+}
+
+/* NAV ACTIVE */
+.nav-active {
+  transform: translateX(0);
+}
+
+/* Toggle Icon Animation */
+.toggle .line1 {
+  transform: rotate(-45deg) translate(-4px, 5px);
+}
+.toggle .line2 {
+  opacity: 0;
+}
+.toggle .line3 {
+  transform: rotate(45deg) translate(-4px, -5px);
+}

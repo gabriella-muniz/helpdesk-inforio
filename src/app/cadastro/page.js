@@ -1,33 +1,31 @@
-"use client"
+"use client";
 
-import { database } from '../../../services/firebase';
-import React, {  useState } from 'react';
-import style from '../cadastro/cadastro.css';
-import Button from '../components/button/button';
-import Input from '../components/input/input';
+import { database } from "../../../services/firebase";
+import React, { useState } from "react";
+import style from "../cadastro/cadastro.css";
+import Button from "../components/button/button";
+import Input from "../components/input/input";
 import LoginCard from "../login-card/page";
-import Link from 'next/link';
-import { getDatabase, ref, push, set } from 'firebase/database';
-
+import Link from "next/link";
+import { getDatabase, ref, push, set } from "firebase/database";
 
 export default function Cadastro() {
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [cpf, setCpf] = useState('');
-  const [telefone, setTelefone] = useState('');
-  const [senha, setSenha] = useState('');
-  const [confirmaSenha, setConfirmaSenha] = useState('');
-  const [image, setImage] = useState('');
+  const [nome, setNome] = useState("");
+  const [email, setEmail] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [telefone, setTelefone] = useState("");
+  const [senha, setSenha] = useState("");
+  const [confirmaSenha, setConfirmaSenha] = useState("");
+  const [image, setImage] = useState("");
   const [mensagens, setMensagens] = useState({
-    nome: '',
-    email: '',
-    cpf: '',
-    telefone: '',
-    senha: '',
-    confirmaSenha: '',
+    nome: "",
+    email: "",
+    cpf: "",
+    telefone: "",
+    senha: "",
+    confirmaSenha: "",
   });
   const [sucesso, setSucesso] = useState(false);
-  
 
   const uploadImage = async (e) => {
     e.preventDefault();
@@ -37,20 +35,25 @@ export default function Cadastro() {
   const gravar = (e) => {
     e.preventDefault();
 
-    // Verificação de campos necessários 
-    if (!nome || !email || !cpf || !telefone || !senha || senha !== confirmaSenha) {
-      console.error('Formulário inválido');
+    // Verificação de campos necessários
+    if (
+      !nome ||
+      !email ||
+      !cpf ||
+      !telefone ||
+      !senha ||
+      senha !== confirmaSenha
+    ) {
+      console.error("Formulário inválido");
       return;
     }
 
-    
-
-    // referência "contatos" 
+    // referência "contatos"
     const db = getDatabase();
-    const contatosRef = ref(db, 'contatos');
+    const contatosRef = ref(db, "contatos");
 
     // chave única para cada registro
-    const novoContatoRef =  push(contatosRef);
+    const novoContatoRef = push(contatosRef);
 
     // Salvar os dados dos "contatos" usando a chave gerada
     set(novoContatoRef, {
@@ -72,81 +75,134 @@ export default function Cadastro() {
 
     // Limpa as mensagens de erro antes de validar novamente
     setMensagens({
-      nome: '',
-      email: '',
-      cpf: '',
-      telefone: '',
-      senha: '',
-      confirmaSenha: '',
-      image:'',
+      nome: "",
+      email: "",
+      cpf: "",
+      telefone: "",
+      senha: "",
+      confirmaSenha: "",
+      image: "",
     });
     setSucesso(false);
 
-    // validação de cada campo 
+    // validação de cada campo
     if (!nome) {
-      setMensagens((prev) => ({ ...prev, nome: 'Campo nome é obrigatório ❌' }));
+      setMensagens((prev) => ({
+        ...prev,
+        nome: "Campo nome é obrigatório ❌",
+      }));
     }
 
     if (!email) {
-      setMensagens((prev) => ({ ...prev, email: 'Campo email é obrigatório ❌' }));
+      setMensagens((prev) => ({
+        ...prev,
+        email: "Campo email é obrigatório ❌",
+      }));
     }
 
     if (!cpf) {
-      setMensagens((prev) => ({ ...prev, cpf: 'Campo CPF é obrigatório ❌' }));
+      setMensagens((prev) => ({ ...prev, cpf: "Campo CPF é obrigatório ❌" }));
     }
 
     if (!telefone) {
-      setMensagens((prev) => ({ ...prev, telefone: 'Campo telefone é obrigatório ❌' }));
+      setMensagens((prev) => ({
+        ...prev,
+        telefone: "Campo telefone é obrigatório ❌",
+      }));
     }
 
     if (!senha) {
-      setMensagens((prev) => ({ ...prev, senha: 'Campo senha é obrigatório ❌' }));
+      setMensagens((prev) => ({
+        ...prev,
+        senha: "Campo senha é obrigatório ❌",
+      }));
     }
 
     if (senha !== confirmaSenha) {
-      setMensagens((prev) => ({ ...prev, confirmaSenha: 'As senhas não coincidem ❌' }));
+      setMensagens((prev) => ({
+        ...prev,
+        confirmaSenha: "As senhas não coincidem ❌",
+      }));
     }
 
     // Se houver mensagens de erro, o formulário é inválido
-    if (Object.values(mensagens).some((mensagem) => mensagem !== '')) {
+    if (Object.values(mensagens).some((mensagem) => mensagem !== "")) {
       return;
     }
 
     // chamando a const gravar com o evento e upload imagem
     uploadImage(e);
     gravar(e);
-    
   };
-
-  
 
   return (
     <>
       <div className="background">
         <LoginCard title="Crie sua conta">
-          <form className='form' onSubmit={handleCadastro}>
-            <Input type="text" placeholder="Digite seu nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+          <form className="form" onSubmit={handleCadastro}>
+            <Input
+              type="text"
+              placeholder="Digite seu nome"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
             {mensagens.nome && <p className="erro">{mensagens.nome}</p>}
 
-            <Input type="email" placeholder="Digite seu email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <Input
+              type="email"
+              placeholder="Digite seu email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
             {mensagens.email && <p className="erro">{mensagens.email}</p>}
 
-            <Input type="text" placeholder="CPF" value={cpf} onChange={(e) => setCpf(e.target.value)} />
+            <Input
+              type="text"
+              placeholder="CPF"
+              value={cpf}
+              onChange={(e) => setCpf(e.target.value)}
+            />
             {mensagens.cpf && <p className="erro">{mensagens.cpf}</p>}
 
-            <Input type="tel" id="telefone"   placeholder="Telefone: (xx) xxxxx-xxxx" value={telefone} onChange={(e) => setTelefone(e.target.value)} />
+            <Input
+              type="tel"
+              id="telefone"
+              placeholder="Telefone: (xx) xxxxx-xxxx"
+              value={telefone}
+              onChange={(e) => setTelefone(e.target.value)}
+            />
             {mensagens.telefone && <p className="erro">{mensagens.telefone}</p>}
 
-            <Input type="password" placeholder="Crie sua senha" value={senha} onChange={(e) => setSenha(e.target.value)} />
+            <Input
+              type="password"
+              placeholder="Crie sua senha"
+              value={senha}
+              onChange={(e) => setSenha(e.target.value)}
+            />
             {mensagens.senha && <p className="erro">{mensagens.senha}</p>}
 
-            <Input type="password" placeholder="Informe sua senha novamente" value={confirmaSenha} onChange={(e) => setConfirmaSenha(e.target.value)} />
-            {mensagens.confirmaSenha && <p className="erro">{mensagens.confirmaSenha}</p>}
+            <Input
+              type="password"
+              placeholder="Informe sua senha novamente"
+              value={confirmaSenha}
+              onChange={(e) => setConfirmaSenha(e.target.value)}
+            />
+            {mensagens.confirmaSenha && (
+              <p className="erro">{mensagens.confirmaSenha}</p>
+            )}
 
-            {sucesso && Object.values(mensagens).every((mensagem) => mensagem === '') && <p className="sucesso">Cadastro realizado com sucesso! ✔️</p>}
+            {sucesso &&
+              Object.values(mensagens).every((mensagem) => mensagem === "") && (
+                <p className="sucesso">Cadastro realizado com sucesso! ✔️</p>
+              )}
 
             <label>Carregue uma imagem</label>
-            <input className='input-image' type="file" name="Image" onChange={(e) => setImage(e.target.files[0])}/>
+            <input
+              className="input-image"
+              type="file"
+              name="Image"
+              onChange={(e) => setImage(e.target.files[0])}
+            />
 
             <Button type="submit">Cadastrar</Button>
             <Link href="/login">Já possui uma conta? Faça login! </Link>
