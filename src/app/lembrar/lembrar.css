@@ -65,16 +65,14 @@ a {
 }
 
 .input-container input {
-  padding-left: 30px; /* Ajuste conforme o tamanho do ícone */
+  padding-left: 30px;
 }
 
 .icon {
   padding: 8px;
-  font-size: 20px ;
+  font-size: 20px;
   position: absolute;
-  right: 6%; /* Ajuste conforme desejado */
+  right: 6%;
   top: 50%;
   transform: translateY(-50%);
 }
-
-
