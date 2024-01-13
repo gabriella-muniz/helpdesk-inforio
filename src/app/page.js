@@ -8,7 +8,7 @@ import Lembrar from "./lembrar/page";
 export default function Home() {
   return (
     <main>
-      <Lembrar />
+      <Login />
     </main>
   );
 }

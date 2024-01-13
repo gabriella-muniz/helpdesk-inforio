@@ -8,6 +8,12 @@ import Input from "../components/input/input";
 import LoginCard from "../login-card/page";
 import Link from "next/link";
 import { getDatabase, ref, push, set } from "firebase/database";
+import { BiUser } from "react-icons/bi";
+import { MdAlternateEmail } from "react-icons/md";
+import { FiPhone } from "react-icons/fi";
+import { BsEye } from "react-icons/bs";
+
+
 
 export default function Cadastro() {
   const [nome, setNome] = useState("");
@@ -138,58 +144,70 @@ export default function Cadastro() {
   return (
     <>
       <div className="background">
-        <LoginCard title="Crie sua conta">
+        <LoginCard title="Cadastro de conta">
           <form className="form" onSubmit={handleCadastro}>
-            <Input
-              type="text"
-              placeholder="Digite seu nome"
-              value={nome}
-              onChange={(e) => setNome(e.target.value)}
-            />
-            {mensagens.nome && <p className="erro">{mensagens.nome}</p>}
+            <div className="input-container">
+              <Input
+                type="text"
+                placeholder="Digite seu nome"
+                value={nome}
+                onChange={(e) => setNome(e.target.value)}
+              /><BiUser className="icon" />
+              {mensagens.nome && <p className="erro">{mensagens.nome}</p>}
+            </div>
 
-            <Input
-              type="email"
-              placeholder="Digite seu email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            {mensagens.email && <p className="erro">{mensagens.email}</p>}
+            <div className="input-container">
+              <Input
+                type="email"
+                placeholder="Digite seu email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              /><MdAlternateEmail className="icon"/>
+              {mensagens.email && <p className="erro">{mensagens.email}</p>}
+            </div>
 
-            <Input
-              type="text"
-              placeholder="CPF"
-              value={cpf}
-              onChange={(e) => setCpf(e.target.value)}
-            />
-            {mensagens.cpf && <p className="erro">{mensagens.cpf}</p>}
+            <div>
+              <Input
+                type="text"
+                placeholder="CPF"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+              />
+              {mensagens.cpf && <p className="erro">{mensagens.cpf}</p>}
+            </div>
 
-            <Input
-              type="tel"
-              id="telefone"
-              placeholder="Telefone: (xx) xxxxx-xxxx"
-              value={telefone}
-              onChange={(e) => setTelefone(e.target.value)}
-            />
-            {mensagens.telefone && <p className="erro">{mensagens.telefone}</p>}
+            <div className="input-container">
+              <Input
+                type="tel"
+                id="telefone"
+                placeholder="Telefone: (xx) xxxxx-xxxx"
+                value={telefone}
+                onChange={(e) => setTelefone(e.target.value)}
+              /> <FiPhone className="icon"/>
+              {mensagens.telefone && <p className="erro">{mensagens.telefone}</p>}
+            </div>
 
-            <Input
-              type="password"
-              placeholder="Crie sua senha"
-              value={senha}
-              onChange={(e) => setSenha(e.target.value)}
-            />
-            {mensagens.senha && <p className="erro">{mensagens.senha}</p>}
+            <div className="input-container">
+              <Input
+                type="password"
+                placeholder="Cadastrosua senha"
+                value={senha}
+                onChange={(e) => setSenha(e.target.value)}
+              /> <BsEye className="icon"/>
+              {mensagens.senha && <p className="erro">{mensagens.senha}</p>}
+            </div>
 
-            <Input
-              type="password"
-              placeholder="Informe sua senha novamente"
-              value={confirmaSenha}
-              onChange={(e) => setConfirmaSenha(e.target.value)}
-            />
-            {mensagens.confirmaSenha && (
-              <p className="erro">{mensagens.confirmaSenha}</p>
-            )}
+            <div className="input-container">
+              <Input
+                type="password"
+                placeholder="Informe sua senha novamente"
+                value={confirmaSenha}
+                onChange={(e) => setConfirmaSenha(e.target.value)}
+              /> <BsEye className="icon"/>
+              {mensagens.confirmaSenha && (
+                <p className="erro">{mensagens.confirmaSenha}</p>
+              )}
+            </div>
 
             {sucesso &&
               Object.values(mensagens).every((mensagem) => mensagem === "") && (

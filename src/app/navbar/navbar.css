@@ -33,7 +33,7 @@ li {
   gap: 4px;
   margin: 5px;
   padding: 8px;
-  margin-right: 2px;
+  margin-right: 10px;
   height: 3rem;
   border-radius: 10px;
   background-color: #b2c7d8;
@@ -135,3 +135,25 @@ li {
 .toggle .line3 {
   transform: rotate(45deg) translate(-4px, -5px);
 }
+
+/*Botão que leva para cadastro*/
+.button-novo-cadastro {
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.button {
+  width: 120px;
+  padding: 10px 10px;
+  background-color: rgb(17, 137, 228);
+  color: rgb(255, 255, 255);
+  font-size: 12px; 
+  cursor: pointer;
+  margin-bottom: 10px;
+  box-shadow: 2px 2px 2px 2px rgba(209, 209, 209, 0.918);
+}
+
