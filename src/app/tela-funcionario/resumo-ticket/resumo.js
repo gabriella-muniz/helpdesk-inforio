@@ -1,8 +1,7 @@
-"use client"
 import React, { useState } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Button } from '@mui/material';
 import "./resumo.css";
-import "./modal.css"
+import "./modal.css";
 
 const statusStyles = {
   'Aberto': { background: 'rgb(145 254 159 / 47%)', color: 'green' },
@@ -11,9 +10,28 @@ const statusStyles = {
 };
 
 const makeStyle = (status) => statusStyles[status] || {};
-  
-const BasicTable = ({ data }) => {
 
+const Filter = ({ onFilterChange, filterType, options }) => {
+  const handleFilterChange = (event) => {
+    onFilterChange(filterType, event.target.value);
+  };
+
+  return (
+    <div className="filter-container">
+      <label htmlFor={`${filterType}Filter`}>{`Filtrar por ${filterType}:`}</label>
+      <select id={`${filterType}Filter`} onChange={handleFilterChange}>
+        <option value="">Todos</option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+};
+
+const BasicTable = ({ data }) => {
   return (
     <TableContainer component={Paper} className='TableContainer'>
       <Table>
@@ -46,16 +64,33 @@ const BasicTable = ({ data }) => {
 
 const ResumoTicket = () => {
   const [modal, setModal] = useState(false);
+  const [statusFilter, setStatusFilter] = useState("");
+  const [solicitanteFilter, setSolicitanteFilter] = useState("");
+  const [assuntoFilter, setAssuntoFilter] = useState("");
+  const [responsavelFilter, setResponsavelFilter] = useState("");
 
   const toggleModal = () => {
     setModal(!modal);
   };
 
-  if(modal) {
-    document.body.classList.add('active-modal')
-  } else {
-    document.body.classList.remove('active-modal')
-  }
+  const handleFilterChange = (filterType, value) => {
+    switch (filterType) {
+      case "status":
+        setStatusFilter(value);
+        break;
+      case "solicitante":
+        setSolicitanteFilter(value);
+        break;
+      case "assunto":
+        setAssuntoFilter(value);
+        break;
+      case "responsavel":
+        setResponsavelFilter(value);
+        break;
+      default:
+        break;
+    }
+  };
 
   const data = [
     { perfil: 'https://i.pinimg.com/236x/80/86/3a/80863aef9cf71d83e6c2f3abf96a6162.jpg', nome: 'Carlos Oliveira', assunto: 'Erro em tela', resp: 'Patrícia', status: 'Fechado', chamado: <button onClick={toggleModal}>Visualizar</button> },
@@ -67,38 +102,30 @@ const ResumoTicket = () => {
     { perfil: 'https://i.pinimg.com/236x/13/4a/8e/134a8e059aa9bd2e44043cc6044401ef.jpg', nome: 'Lucas Silva', assunto: 'Software indisponível', resp: 'Juliana', status: 'Fechado', chamado: <button>Visualizar</button> }
   ];
 
-  return (<><BasicTable data={data} />
-  {modal && (
-        <div className="modal">
-        <div onClick={toggleModal} className="overlay"></div>
-        <div className="modal-content">
-            <div className="modal-right-side">
-                <h1 className='status-modal'>Fechado</h1>
-                <div className='modal-perfil'>
-                    <div className='foto-modal-perfil'>
-                        <img src='https://i.pinimg.com/236x/80/86/3a/80863aef9cf71d83e6c2f3abf96a6162.jpg' alt="Foto de Carlos Oliveira" />
-                    </div>
-                    <div className='modal-perfil-content'>
-                        <h1>Carlos Oliveira</h1>
-                        <p>CarlosOliv@Gmail.com</p>
-                        <p>(12) 34567-8901</p>
-                    </div>
-                </div>
-            </div>
-            <div className='modal-side-content'>
-                <p>Assunto: Erro em tela</p>
-                <p>Detalhe: Sapiente dolorum id maiores dolores? Illum pariatur possimus
-                  quaerat ipsum quos molestiae rem aspernatur dicta tenetur. Sunt
-                  placeat tempora vitae enim incidunt porro fuga ea.</p>
-                <button className="close-modal" onClick={toggleModal}>
-                    CLOSE
-                </button>
-            </div>
-        </div>
-    </div>    
-      )}
-  </>)
+  const filteredData = data.filter((item) =>
+    (statusFilter === "" || item.status === statusFilter) &&
+    (solicitanteFilter === "" || item.nome === solicitanteFilter) &&
+    (assuntoFilter === "" || item.assunto === assuntoFilter) &&
+    (responsavelFilter === "" || item.resp === responsavelFilter)
+  );
 
-}
+  return (
+    <>
+      <Filter onFilterChange={handleFilterChange} filterType="status" options={["Aberto", "Fechado", "Pendente"]} />
+      <Filter onFilterChange={handleFilterChange} filterType="solicitante" options={["Carlos Oliveira", "Pedro Santos", "Amanda Silva", "Maria Souza", "Ana Oliveira", "Juliana Pereira", "Lucas Silva"]} />
+      <Filter onFilterChange={handleFilterChange} filterType="assunto" options={["Erro em tela", "Computador não liga", "Problemas na rede", "Software indisponível"]} />
+      <Filter onFilterChange={handleFilterChange} filterType="responsavel" options={["Patrícia", "Marcos", "Não atribuído", "Gabriel", "Juliana"]} />
+      <BasicTable data={filteredData} />
+      {modal && (
+        <div className="modal">
+          <div onClick={toggleModal} className="overlay"></div>
+          <div className="modal-content">
+            {/* Restante do código do modal... */}
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
 
 export default ResumoTicket;

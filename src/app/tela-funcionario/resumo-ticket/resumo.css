@@ -1,81 +1,118 @@
 .MuiTableRow-root > * {
-    padding: 10px;
-  }
-  
-  .MuiTableRow-root.MuiTableRow-head > * {
-    font-weight: bold !important;
-    color: rgb(168, 168, 168);
-    padding-inline: 30px;
-  }
+  padding: 10px;
+}
 
-  .TableContainer {
+.MuiTableRow-root.MuiTableRow-head > * {
+  font-weight: bold !important;
+  color: rgb(168, 168, 168);
+  padding-inline: 30px;
+}
+
+.TableContainer {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  width: 70%;
+}
+
+.TableBody {
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.soli {
+  padding-inline-end: 5px;
+}
+
+.Table td {
+  border: none !important;
+}
+
+.Table:first-child {
+  border-radius: 0.7rem !important;
+}
+.status {
+  display: block;
+  font-size: small;
+  padding: 5%;
+  border-radius: 30px;
+}
+
+.nome {
+  margin-left: 0px;
+  display: flex;
+}
+
+.Avatar1 {
+  margin-right: 0px;
+  padding-left: 30px;
+}
+
+.Details {
+  color: #00b5ff !important;
+}
+
+button {
+  font-size: 0.7rem;
+  color: white;
+  background-color: #6ca3d0;
+  border: none;
+  border-radius: 9px;
+  padding: 5%;
+  width: 5rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .Table {
+    width: 170%;
+    margin-top: 2rem;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .Table{
+    position: relative;
     display: flex;
-    padding: 20px;
+    flex-direction: column;
     align-items: center;
-    width: 70%;
+    width: 23rem;
   }
+}
+.filter-section {
+  display: flex;
+  flex-wrap: wrap; /* Permitindo que os filtros quebrem para a próxima linha */
+  justify-content: center; /* Centralizando os filtros horizontalmente */
+  margin-bottom: 20px;
+}
 
-  .TableBody {
-    align-items: center;
-    justify-content: flex-start;
-  }
+.filter-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
 
-  .soli {
-    padding-inline-end: 5px;
-  }
-  
-  .Table td {
-    border: none !important;
-  }
-  
-  .Table:first-child {
-    border-radius: 0.7rem !important;
-  }
-  .status {
-    display: block;
-    font-size: small;
-    padding: 5%;
-    border-radius: 30px;
-  }
+.filter-container label {
+  margin-right: 5px;
+  color: #6ca3d0;
+  font-size: 1.0rem;
+}
 
-  .nome {
-    margin-left: 0px;
-    display: flex;
-  }
+.filter-select {
+  font-size: 1.0rem;
+  padding: 5%;
+  border: none;
+  border-radius: 9px;
+  width: 7rem;
+}
 
-  .Avatar1 {
-    margin-right: 0px;
-    padding-left: 30px;
+/* Adicionando uma largura máxima para os filtros */
+@media (max-width: 768px) {
+  .filter-container {
+    width: 100%;
+    margin-right: 0;
   }
-  
-  .Details {
-    color: #00b5ff !important;
-  }
+}
 
-  button {
-    font-size: 0.7rem;
-    color: white;
-    background-color: #6ca3d0;
-    border: none;
-    border-radius: 9px;
-    padding: 5%;
-    width: 5rem;
-  }
-  
-  @media screen and (max-width: 1200px) {
-    .Table {
-      width: 170%;
-      margin-top: 2rem;
-    }
-  }
-  
-  
-  @media screen and (max-width: 768px) {
-    .Table{
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 23rem;
-    }
-  }
+
