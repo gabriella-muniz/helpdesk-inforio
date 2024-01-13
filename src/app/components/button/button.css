@@ -1,4 +1,5 @@
 .button {
+  width: 100;
   padding: 15px 25px;
   border: 0;
   background-color: rgb(66, 139, 202);
@@ -33,4 +34,10 @@ button:hover {
   margin-bottom: 20px;
   box-shadow: 2px 2px 2px 2px rgba(209, 209, 209, 0.918);
   margin-top: -25px;
+}
+
+.button2:hover {
+  background-color: rgb(192, 88, 88);
+  color: rgb(255, 255, 255);
+  box-shadow: 2px 2px 2px 2px rgba(172, 172, 172, 0.918);
 }
