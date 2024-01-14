@@ -61,6 +61,10 @@ export default function AberturaChamado() {
       <div className="background">
         <LoginCard title="Abertura de Chamado">
           <form className='form' onSubmit={abrirChamado}>
+            <label>Informe seu nome:</label>
+            <Input type="text" placeholder="Assunto"></Input>
+            <label>Informe seu email para contato:</label>
+            <Input type="text" placeholder="Assunto"></Input>
             <label>Selecione o assunto:</label>
             <select value={assunto} onChange={handleAssuntoChange}>
               <option value="selecionar" disabled>Selecionar</option>

@@ -30,7 +30,7 @@ export default function Login() {
               <BiLockAlt className="icon" />
             </div>
 
-            <Link href="/navbar">
+            <Link href="/chamado">
             <Button  type="submit">Entrar</Button>
             </Link>
             
