@@ -12,7 +12,7 @@
   display: flex;
   padding: 20px;
   align-items: center;
-  width: 70%;
+  width: 100%;
 }
 
 .TableBody {
@@ -89,8 +89,10 @@ button {
 .filter-container {
   display: flex;
   align-items: center;
+  justify-content: center;
   margin-right: 10px;
   margin-bottom: 10px;
+  display: inline-block;
 }
 
 .filter-container label {
