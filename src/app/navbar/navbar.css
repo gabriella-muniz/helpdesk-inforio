@@ -50,8 +50,8 @@ li {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 8vh;
-  background-color: #6ca3d0;
+  height: 11vh;
+  background-color:#2D66B7;
 }
 
 .nav-item {
@@ -146,12 +146,12 @@ li {
   justify-content: end;
 }
 
-.button {
-  width: 120px;
-  padding: 10px 10px;
-  background-color: rgb(17, 137, 228);
+.button-cadastro {
+  width: 150px;
+  padding: 10px 15px;
+  background-color:#2D66B7;
   color: rgb(255, 255, 255);
-  font-size: 12px; 
+  font-size: 15px; 
   cursor: pointer;
   margin-bottom: 10px;
   box-shadow: 2px 2px 2px 2px rgba(209, 209, 209, 0.918);

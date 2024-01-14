@@ -86,7 +86,7 @@ function Navbar({ openModal }) {
       </>
       <div className="button-novo-cadastro" >
         <Link href="/cadastro">
-          <Button type="submit">Cadastrar usuário</Button>
+          <button className="button-cadastro" type="submit"> Cadastrar usuário</button>
         </Link>
       </div>
       <div className="resumoTicket">
