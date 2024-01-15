@@ -24,7 +24,7 @@ li {
   width: 40px;
   height: 40px;
   border: 1px solid black;
-  border-radius: 10%;
+  border-radius: 5%;
   overflow: hidden;
 }
 
@@ -35,7 +35,7 @@ li {
   padding: 8px;
   margin-right: 10px;
   height: 3rem;
-  border-radius: 10px;
+  border-radius: 8px;
   background-color: #b2c7d8;
   align-items: center;
 }
@@ -51,12 +51,15 @@ li {
   align-items: center;
   justify-content: space-between;
   height: 11vh;
-  background-color:#2D66B7;
+  background-color: #2d66b7;
 }
 
 .nav-item {
   display: flex;
   align-items: center;
+  padding: 4px;
+  margin: 4px;
+  color: aliceblue;
 }
 
 .nav-link {
@@ -68,7 +71,12 @@ li {
 }
 
 .nav-link:hover {
-  color: white;
+  color: #b9ff00;
+  transition: 2s;
+}
+
+.nav-item:hover {
+  color: #b9ff00;
   transition: 2s;
 }
 
@@ -77,7 +85,6 @@ li {
   font-weight: bold;
 }
 
-/* FEITO */
 .nav-menu {
   display: flex;
   align-items: center;
@@ -104,18 +111,18 @@ li {
   }
   .nav-menu {
     position: fixed;
-    top: 8vh;
+    top: 11vh;
     right: 0;
-    width: 50%;
+    width: 30%;
     height: 93vh;
-    background-color: #6ca3d0;
+    background-color: #2d66b7;
     flex-direction: column;
     transform: translateX(100%);
     transition: 0.5s ease-in;
   }
 
   .nav-link:hover {
-    color: thistle;
+    color: #b9ff00;
     transition: 2s;
   }
 }
@@ -149,11 +156,10 @@ li {
 .button-cadastro {
   width: 150px;
   padding: 10px 15px;
-  background-color:#2D66B7;
+  background-color: #2d66b7;
   color: rgb(255, 255, 255);
-  font-size: 15px; 
+  font-size: 15px;
   cursor: pointer;
   margin-bottom: 10px;
   box-shadow: 2px 2px 2px 2px rgba(209, 209, 209, 0.918);
 }
-

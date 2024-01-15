@@ -10,12 +10,13 @@ import {
 import ResumoTicket from "../tela-funcionario/resumo-ticket/resumo";
 import cadastro from "../cadastro/page";
 import Link from "next/link";
+import ModalSuporte from "../components/ModalSuporte/Modal";
 import Button from "../components/button/button";
 
-
-function Navbar({ openModal }) {
+function Navbar() {
   const [active, setActive] = useState("nav-menu");
   const [toggleIcon, setToggleIcon] = useState("nav-toggle");
+  const [openModal, setOpenModal] = useState(false);
 
   const navToggle = () => {
     active === "nav-menu"
@@ -46,22 +47,23 @@ function Navbar({ openModal }) {
                 Chamados
               </a>
             </li>
-            <li className="nav-item">
-              <SlSettings />
 
-              <a href="#" className="nav-link">
-                Configurações
-              </a>
-            </li>
             <li className="nav-item">
               <SlEarphonesAlt />
-              <a href="#" className="nav-link" onClick={openModal}>
+              <a
+                href="#"
+                className="nav-link"
+                onClick={() => {
+                  console.log("clique");
+                  setOpenModal(true);
+                }}
+              >
                 Suporte
               </a>
             </li>
             <li className="nav-item">
               <SlLogout />
-              <a href="#" className="nav-link">
+              <a href="/login" className="nav-link">
                 Sair
               </a>
             </li>
@@ -74,7 +76,7 @@ function Navbar({ openModal }) {
               className="avatar-img"
               alt="logo"
             />
-            <span>Fulano</span>
+            <span>Patricia</span>
           </div>
 
           <div onClick={navToggle} className={toggleIcon}>
@@ -84,9 +86,16 @@ function Navbar({ openModal }) {
           </div>
         </nav>
       </>
-      <div className="button-novo-cadastro" >
+      <ModalSuporte
+        isOpen={openModal}
+        setCloseModal={() => setOpenModal(false)}
+      />
+      <div className="button-novo-cadastro">
         <Link href="/cadastro">
-          <button className="button-cadastro" type="submit"> Cadastrar usuário</button>
+          <button className="button-cadastro" type="submit">
+            {" "}
+            Cadastrar usuário
+          </button>
         </Link>
       </div>
       <div className="resumoTicket">
